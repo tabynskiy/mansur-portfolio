@@ -1,0 +1,10 @@
+node_modules/
+dist/
+.pnpm-store/
+
+*.log
+preview.out.log
+preview.err.log
+
+.DS_Store
+Thumbs.db

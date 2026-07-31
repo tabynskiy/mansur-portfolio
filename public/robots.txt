@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://mansurtabyn.com/sitemap.xml
