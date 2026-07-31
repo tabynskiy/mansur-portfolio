@@ -7,6 +7,7 @@ export function Layout({ children }) {
 
   useEffect(() => {
     if (location.pathname !== "/") {
+      setActiveSection("");
       return undefined;
     }
 
@@ -16,33 +17,32 @@ export function Layout({ children }) {
       .filter(Boolean);
 
     const pickActiveSection = () => {
-      const viewportMiddle = window.innerHeight * 0.35;
-      let current = "";
-
-      for (const section of sections) {
+      const offset = window.innerHeight * 0.28;
+      const current = sections.find((section) => {
         const rect = section.getBoundingClientRect();
-        if (rect.top <= viewportMiddle && rect.bottom >= viewportMiddle) {
-          current = section.id;
-          break;
-        }
-      }
+        return rect.top <= offset && rect.bottom >= offset;
+      });
 
-      if (!current && window.scrollY < window.innerHeight * 0.2) {
-        current = "";
+      if (current) {
+        setActiveSection(current.id);
       }
-
-      setActiveSection(current);
     };
 
     const observer = new IntersectionObserver(
       (entries) => {
-        if (entries.some((entry) => entry.isIntersecting)) {
+        const visibleEntries = entries
+          .filter((entry) => entry.isIntersecting)
+          .sort((a, b) => a.boundingClientRect.top - b.boundingClientRect.top);
+
+        if (visibleEntries[0]?.target?.id) {
+          setActiveSection(visibleEntries[0].target.id);
+        } else {
           pickActiveSection();
         }
       },
       {
-        rootMargin: "-20% 0px -55% 0px",
-        threshold: [0.05, 0.2, 0.4, 0.65]
+        rootMargin: "-28% 0px -52% 0px",
+        threshold: [0.15, 0.3, 0.6]
       }
     );
 
@@ -50,11 +50,17 @@ export function Layout({ children }) {
 
     const handleScroll = () => pickActiveSection();
     const handleHashChange = () => {
-      const hashId = window.location.hash.replace("#", "");
-      setActiveSection(ids.includes(hashId) ? hashId : "");
+      const hash = location.hash.replace("#", "");
+      if (hash && ids.includes(hash)) {
+        setActiveSection(hash);
+      } else {
+        pickActiveSection();
+      }
     };
 
     pickActiveSection();
+    handleHashChange();
+
     window.addEventListener("scroll", handleScroll, { passive: true });
     window.addEventListener("hashchange", handleHashChange);
 
@@ -75,48 +81,39 @@ export function Layout({ children }) {
   return (
     <div className="min-h-screen bg-mist text-ink">
       <div className="fixed inset-x-0 top-0 z-40">
-        <div className="mx-auto max-w-7xl px-6 pt-4 lg:px-8">
-          <div className="flex items-center justify-between rounded-full border border-white/70 bg-white/72 px-4 py-3 shadow-soft shadow-slate-900/5 backdrop-blur-2xl">
-          <Link to="/" className="text-lg font-semibold tracking-[0.18em] text-ink uppercase">
-            TABYNSKIYCOM
-          </Link>
-          <nav className="hidden items-center gap-2 text-sm text-steel md:flex">
-            {navItems.map(([id, label]) => {
-              const isActive = location.pathname === "/" && activeSection === id;
-              return (
-                <a
-                  key={id}
-                  href={`/#${id}`}
-                  className={`group relative rounded-full px-4 py-2.5 transition duration-300 ${
-                    isActive ? "text-ink" : "text-steel hover:text-ink"
-                  }`}
-                >
-                  <span className="relative z-10">{label}</span>
-                  <span
-                    className={`absolute inset-x-3 bottom-2 h-px origin-left rounded-full bg-ink transition duration-300 ${
-                      isActive ? "scale-x-100 opacity-100" : "scale-x-0 opacity-40 group-hover:scale-x-100"
-                    }`}
-                  />
-                  <span
-                    className={`absolute inset-0 rounded-full border transition duration-300 ${
+        <div className="mx-auto max-w-7xl px-4 pt-3 sm:px-5 md:pt-4 lg:px-8">
+          <div className="flex items-center justify-between rounded-full border border-white/70 bg-white/72 px-3 py-2.5 shadow-soft shadow-slate-900/5 backdrop-blur-2xl sm:px-4 sm:py-3">
+            <Link to="/" className="text-[0.88rem] font-semibold uppercase tracking-[0.16em] text-ink sm:text-base sm:tracking-[0.18em] lg:text-lg">
+              TABYNSKIYCOM
+            </Link>
+
+            <nav className="hidden items-center gap-2 text-sm text-steel md:flex">
+              {navItems.map(([id, label]) => {
+                const isActive = location.pathname === "/" && activeSection === id;
+                return (
+                  <a
+                    key={id}
+                    href={`/#${id}`}
+                    className={`rounded-full px-5 py-3 transition duration-300 ${
                       isActive
-                        ? "border-lineStrong bg-white shadow-insetLine"
-                        : "border-transparent group-hover:border-white/80 group-hover:bg-white/70"
+                        ? "border border-lineStrong bg-white/88 text-ink shadow-[0_10px_24px_rgba(9,15,33,0.06)]"
+                        : "border border-transparent hover:border-line/80 hover:bg-white/58 hover:text-ink"
                     }`}
-                  />
-                </a>
-              );
-            })}
-          </nav>
-          <a
-            href="/#contact"
-            className="button-secondary px-5 py-3 text-sm"
-          >
-            Обсудить проект
-          </a>
-        </div>
+                  >
+                    {label}
+                  </a>
+                );
+              })}
+            </nav>
+
+            <a href="/#contact" className="button-secondary min-h-[44px] px-3.5 py-2.5 text-xs sm:px-5 sm:py-3 sm:text-sm">
+              <span className="sm:hidden">Связаться</span>
+              <span className="hidden sm:inline">Обсудить проект</span>
+            </a>
+          </div>
         </div>
       </div>
+
       <main>{children}</main>
     </div>
   );

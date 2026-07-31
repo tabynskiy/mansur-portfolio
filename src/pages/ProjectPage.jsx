@@ -13,40 +13,49 @@ export function ProjectPage() {
 
   return (
     <Layout>
-      <section className="px-6 pb-24 pt-32 lg:px-8 lg:pt-36">
+      <section className="px-4 pb-16 pt-24 sm:px-5 sm:pb-20 sm:pt-28 lg:px-8 lg:pb-24 lg:pt-36">
         <div className="mx-auto max-w-6xl">
           <Reveal>
             <Link to="/" className="text-sm font-semibold uppercase tracking-[0.24em] text-accent">
-              ← Назад на главную
+              Назад на главную
             </Link>
           </Reveal>
 
           <Reveal delay={70} className="mt-10">
-            <div className={`rounded-[2.5rem] bg-gradient-to-br ${project.accent} p-10 shadow-panel sm:p-14`}>
+            <div
+              className={`rounded-[2rem] bg-gradient-to-br ${project.accent} p-6 shadow-panel sm:rounded-[2.25rem] sm:p-10 lg:rounded-[2.5rem] lg:p-14`}
+            >
               <p className="text-sm uppercase tracking-[0.25em] text-ink/60">{project.category}</p>
-              <h1 className="mt-6 font-display text-5xl tracking-[-0.04em] text-ink sm:text-6xl">{project.name}</h1>
-              <p className="mt-6 max-w-3xl text-xl leading-8 text-ink/80">{project.subtitle}</p>
+              <h1 className="mt-5 font-display text-[2.9rem] tracking-[-0.04em] text-ink sm:mt-6 sm:text-5xl lg:text-6xl">
+                {project.name}
+              </h1>
+              <p className="mt-5 max-w-3xl text-lg leading-7 text-ink/80 sm:mt-6 sm:text-xl sm:leading-8">
+                {project.subtitle}
+              </p>
             </div>
           </Reveal>
 
           <div className="mt-10 grid gap-8 lg:grid-cols-[1.15fr_0.85fr]">
-            <Reveal className="card-surface rounded-[2rem] p-8">
-              <h2 className="font-display text-3xl tracking-[-0.03em] text-ink">Описание проекта</h2>
-              <p className="mt-6 text-lg leading-8 text-steel">{project.description}</p>
+            <Reveal className="card-surface rounded-[1.75rem] p-6 sm:rounded-[2rem] sm:p-8">
+              <h2 className="font-display text-[2rem] tracking-[-0.03em] text-ink sm:text-3xl">Описание проекта</h2>
+              <p className="mt-5 text-base leading-7 text-steel sm:mt-6 sm:text-lg sm:leading-8">{project.description}</p>
+
               {project.demoVideo ? (
-                <div className="mt-10 overflow-hidden rounded-[1.5rem] border border-line bg-white shadow-soft">
+                <div className="mt-8 overflow-hidden rounded-[1.35rem] border border-line bg-white shadow-soft sm:mt-10 sm:rounded-[1.5rem]">
                   <video className="aspect-video w-full bg-ink" controls preload="metadata">
                     <source src={project.demoVideo} type="video/mp4" />
                     Ваш браузер не поддерживает встроенное видео.
                   </video>
                 </div>
               ) : null}
+
               {project.confidential ? (
-                <div className="mt-10 rounded-[1.5rem] border border-accent/15 bg-accentSoft/35 p-6">
+                <div className="mt-8 rounded-[1.35rem] border border-accent/15 bg-accentSoft/35 p-5 sm:mt-10 sm:rounded-[1.5rem] sm:p-6">
                   <p className="text-sm font-semibold uppercase tracking-[0.22em] text-accentDeep">Конфиденциальный проект</p>
                   <p className="mt-3 leading-7 text-steelDeep">{project.confidentialText}</p>
                 </div>
               ) : null}
+
               <h3 className="mt-10 text-sm font-semibold uppercase tracking-[0.22em] text-accent">Что было сделано</h3>
               <ul className="mt-6 space-y-4">
                 {project.completed.map((item) => (
@@ -59,11 +68,12 @@ export function ProjectPage() {
             </Reveal>
 
             <Reveal delay={90} className="space-y-6">
-              <div className="card-surface rounded-[2rem] p-8">
+              <div className="card-surface rounded-[1.75rem] p-6 sm:rounded-[2rem] sm:p-8">
                 <p className="text-sm uppercase tracking-[0.2em] text-steel">Год</p>
                 <p className="mt-4 text-3xl font-semibold text-ink">{project.year}</p>
               </div>
-              <div className="card-surface rounded-[2rem] p-8">
+
+              <div className="card-surface rounded-[1.75rem] p-6 sm:rounded-[2rem] sm:p-8">
                 <p className="text-sm uppercase tracking-[0.2em] text-steel">Ключевые акценты</p>
                 <div className="mt-5 flex flex-wrap gap-3">
                   {project.metrics.map((metric) => (
@@ -76,7 +86,8 @@ export function ProjectPage() {
                   ))}
                 </div>
               </div>
-              <div className="rounded-[2rem] border border-line bg-[linear-gradient(145deg,_#050816_0%,_#14379a_100%)] p-8 text-white shadow-panel">
+
+              <div className="rounded-[1.75rem] border border-line bg-[linear-gradient(145deg,_#050816_0%,_#14379a_100%)] p-6 text-white shadow-panel sm:rounded-[2rem] sm:p-8">
                 <p className="text-sm uppercase tracking-[0.2em] text-white/50">
                   {project.confidential ? "Статус показа" : "Следующий шаг"}
                 </p>

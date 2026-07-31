@@ -269,83 +269,83 @@ const aboutHighlights = [
 export function HomePage() {
   return (
     <Layout>
-      <section className="relative overflow-hidden px-6 pb-24 pt-32 lg:px-8 lg:pb-32 lg:pt-40">
+      <section className="relative overflow-hidden px-4 pb-16 pt-24 sm:px-5 sm:pb-20 sm:pt-28 lg:px-8 lg:pb-32 lg:pt-40">
         <div className="absolute inset-0 -z-10 bg-[radial-gradient(circle_at_top_left,_rgba(31,79,209,0.18),_transparent_30%),radial-gradient(circle_at_78%_12%,_rgba(15,23,45,0.1),_transparent_22%),linear-gradient(180deg,_#ffffff_0%,_#f4f7fb_100%)]" />
         <div className="absolute inset-y-0 right-0 -z-10 hidden w-[48%] bg-grid bg-[size:30px_30px] opacity-50 lg:block" />
         <div className="absolute right-[10%] top-28 -z-10 hidden h-64 w-64 rounded-full bg-accent/10 blur-3xl lg:block" />
         <div className="absolute left-[8%] top-40 -z-10 hidden h-28 w-28 rounded-full border border-white/60 bg-white/45 blur-xl lg:block" />
-        <div className="mx-auto grid max-w-7xl items-center gap-20 lg:grid-cols-[1.02fr_0.98fr]">
-          <Reveal className="max-w-3xl">
-            <p className="mb-7 text-xs font-semibold uppercase tracking-[0.38em] text-accent">
+        <div className="mx-auto grid max-w-7xl items-center gap-12 sm:gap-16 lg:grid-cols-[1.02fr_0.98fr] lg:gap-20">
+          <Reveal className="max-w-[34rem] sm:max-w-3xl">
+            <p className="mb-5 text-[10px] font-semibold uppercase tracking-[0.32em] text-accent sm:mb-7 sm:text-xs sm:tracking-[0.38em]">
               Personal Brand / Web / AI
             </p>
-            <h1 className="font-display text-[3.8rem] leading-[0.94] tracking-[-0.045em] text-ink sm:text-[5rem] lg:text-[6.2rem]">
+            <h1 className="max-w-[10ch] font-display text-[clamp(3.25rem,16vw,4.625rem)] leading-[0.9] tracking-[-0.05em] text-ink sm:text-[5rem] lg:text-[6.2rem]">
               Мансур
               <br />
               Табынский
             </h1>
-            <div className="mt-10 space-y-3 text-lg leading-8 text-steelDeep sm:text-[1.34rem]">
+            <div className="mt-7 space-y-2 text-base leading-7 text-steelDeep sm:mt-10 sm:space-y-3 sm:text-[1.34rem] sm:leading-8">
               <p>Студент Al Qasimia University (ОАЭ)</p>
               <p>Веб-разработчик</p>
               <p>Специалист по искусственному интеллекту</p>
             </div>
-            <p className="text-measure mt-9 max-w-2xl text-lg leading-8 text-steel">
+            <p className="text-measure mt-7 max-w-2xl text-base leading-7 text-steel sm:mt-9 sm:text-lg sm:leading-8">
               Создаю современные сайты, автоматизирую бизнес-процессы и внедряю ИИ-решения для компаний.
             </p>
-            <div className="mt-12 flex flex-col gap-4 sm:flex-row">
+            <div className="mt-8 flex flex-col gap-3 sm:mt-12 sm:flex-row sm:gap-4">
               <a
                 href="#projects"
-                className="button-primary px-7 py-4 text-center text-sm"
+                className="button-primary w-full px-6 py-3.5 text-center text-sm sm:w-auto sm:px-7 sm:py-4"
               >
                 Посмотреть проекты
               </a>
               <a
                 href="#contact"
-                className="button-secondary px-7 py-4 text-center text-sm"
+                className="button-secondary w-full px-6 py-3.5 text-center text-sm sm:w-auto sm:px-7 sm:py-4"
               >
                 Связаться
               </a>
             </div>
           </Reveal>
 
-          <Reveal className="relative" delay={120}>
-            <div className="absolute inset-10 rounded-[2rem] bg-accent/10 blur-3xl" />
-            <div className="absolute -right-4 top-12 h-24 w-24 rounded-full border border-white/50 bg-white/40 blur-lg" />
-            <div className="absolute inset-3 rounded-[2rem] border border-white/40 bg-white/24 animate-pulseRing" />
-            <div className="glass-panel relative overflow-hidden rounded-[2rem] p-6 sm:p-8">
+          <Reveal className="relative max-w-[34rem] lg:max-w-none" delay={120}>
+            <div className="absolute inset-6 rounded-[1.75rem] bg-accent/10 blur-2xl sm:inset-10 sm:rounded-[2rem] sm:blur-3xl" />
+            <div className="absolute -right-4 top-12 hidden h-24 w-24 rounded-full border border-white/50 bg-white/40 blur-lg sm:block" />
+            <div className="absolute inset-2 rounded-[1.75rem] border border-white/40 bg-white/24 animate-pulseRing sm:inset-3 sm:rounded-[2rem]" />
+            <div className="glass-panel relative overflow-hidden rounded-[1.75rem] p-5 sm:rounded-[2rem] sm:p-8">
               <div className="absolute inset-0 bg-noise opacity-90" />
-              <div className="relative mb-7 flex items-center justify-between">
+              <div className="relative mb-6 flex items-center justify-between sm:mb-7">
                 <div>
                   <p className="text-sm uppercase tracking-[0.28em] text-steel">Creative Profile</p>
-                  <p className="mt-2 font-display text-[1.85rem] tracking-[-0.03em] text-ink">Web + AI Systems</p>
+                  <p className="mt-2 font-display text-[1.55rem] tracking-[-0.03em] text-ink sm:text-[1.85rem]">Web + AI Systems</p>
                 </div>
                 <div className="h-3 w-3 rounded-full bg-accent shadow-[0_0_0_8px_rgba(31,79,209,0.08)]" />
               </div>
               <div className="relative grid gap-4 sm:grid-cols-2">
-                <div className="rounded-[1.5rem] bg-[linear-gradient(145deg,_#050816_0%,_#0f1c3d_100%)] p-6 text-white shadow-[0_24px_50px_rgba(5,8,22,0.24)]">
+                <div className="rounded-[1.35rem] bg-[linear-gradient(145deg,_#050816_0%,_#0f1c3d_100%)] p-5 text-white shadow-[0_24px_50px_rgba(5,8,22,0.24)] sm:rounded-[1.5rem] sm:p-6">
                   <p className="text-sm uppercase tracking-[0.2em] text-white/55">Focus</p>
-                  <p className="mt-12 text-3xl font-semibold tracking-[-0.03em]">Digital products</p>
+                  <p className="mt-10 text-[1.7rem] font-semibold tracking-[-0.03em] sm:mt-12 sm:text-3xl">Digital products</p>
                 </div>
-                <div className="animate-float rounded-[1.5rem] border border-white/70 bg-[linear-gradient(180deg,_#edf4ff_0%,_#dbe7ff_100%)] p-6 shadow-[0_22px_48px_rgba(31,79,209,0.12)]">
+                <div className="animate-float rounded-[1.35rem] border border-white/70 bg-[linear-gradient(180deg,_#edf4ff_0%,_#dbe7ff_100%)] p-5 shadow-[0_22px_48px_rgba(31,79,209,0.12)] sm:rounded-[1.5rem] sm:p-6">
                   <p className="text-sm uppercase tracking-[0.2em] text-steel">Approach</p>
-                  <p className="mt-12 text-3xl font-semibold tracking-[-0.03em] text-ink">Premium minimalism</p>
+                  <p className="mt-10 text-[1.7rem] font-semibold tracking-[-0.03em] text-ink sm:mt-12 sm:text-3xl">Premium minimalism</p>
                 </div>
-                <div className="rounded-[1.5rem] border border-line/90 bg-white/70 p-6 shadow-soft sm:col-span-2">
+                <div className="rounded-[1.35rem] border border-line/90 bg-white/70 p-5 shadow-soft sm:col-span-2 sm:rounded-[1.5rem] sm:p-6">
                   <div className="flex flex-wrap gap-3">
                     {["React", "AI", "Automation", "Vercel", "UX"].map((tag) => (
                       <span
                         key={tag}
-                        className="rounded-full border border-lineStrong bg-white/85 px-4 py-2 text-sm font-medium text-ink shadow-sm transition duration-300 hover:-translate-y-0.5 hover:border-accent/40 hover:bg-accentSoft/60"
+                        className="rounded-full border border-lineStrong bg-white/85 px-4 py-2 text-xs font-medium text-ink shadow-sm transition duration-300 hover:-translate-y-0.5 hover:border-accent/40 hover:bg-accentSoft/60 sm:text-sm"
                       >
                         {tag}
                       </span>
                     ))}
                   </div>
-                  <div className="mt-8 h-56 rounded-[1.5rem] bg-[linear-gradient(135deg,_#050816_0%,_#1539a8_48%,_#e9f0ff_100%)] p-6 shadow-float">
+                  <div className="mt-6 h-48 rounded-[1.35rem] bg-[linear-gradient(135deg,_#050816_0%,_#1539a8_48%,_#e9f0ff_100%)] p-5 shadow-float sm:mt-8 sm:h-56 sm:rounded-[1.5rem] sm:p-6">
                     <div className="flex h-full items-end justify-between">
                       <div>
                         <p className="text-sm uppercase tracking-[0.25em] text-white/60">Brand energy</p>
-                        <p className="mt-3 max-w-xs text-2xl font-semibold leading-snug tracking-[-0.03em] text-white">
+                        <p className="mt-3 max-w-xs text-xl font-semibold leading-snug tracking-[-0.03em] text-white sm:text-2xl">
                           Сильная подача, ясная структура и внимание к деталям.
                         </p>
                       </div>
@@ -359,24 +359,24 @@ export function HomePage() {
         </div>
       </section>
 
-      <section id="about" className="section-shell px-6 lg:px-8">
+      <section id="about" className="section-shell px-4 sm:px-5 lg:px-8">
         <div className="mx-auto max-w-7xl">
-          <div className="grid items-start gap-8 lg:grid-cols-[0.88fr_1.12fr] lg:gap-12">
+          <div className="grid items-start gap-6 sm:gap-8 lg:grid-cols-[0.88fr_1.12fr] lg:gap-12">
             <Reveal>
-              <div className="card-surface rounded-[2rem] p-7 sm:p-8">
+              <div className="card-surface rounded-[1.75rem] p-5 sm:rounded-[2rem] sm:p-8">
                 <div className="flex items-center gap-3 text-[11px] font-semibold uppercase tracking-[0.34em] text-accent">
                   <span>About</span>
                   <span className="h-px w-10 bg-accent/35" />
                   <span>01</span>
                 </div>
-                <h2 className="mt-5 font-display text-[2.7rem] leading-[0.98] tracking-[-0.04em] text-ink sm:text-[3.2rem]">
+                <h2 className="mt-5 font-display text-[2.35rem] leading-[0.98] tracking-[-0.04em] text-ink sm:text-[3.2rem]">
                   Обо мне
                 </h2>
 
-                <div className="mt-7 overflow-hidden rounded-[1.6rem] border border-lineStrong/90 bg-[linear-gradient(160deg,rgba(255,255,255,0.96)_0%,rgba(234,241,255,0.88)_100%)] p-6 shadow-soft">
+                <div className="mt-7 overflow-hidden rounded-[1.35rem] border border-lineStrong/90 bg-[linear-gradient(160deg,rgba(255,255,255,0.96)_0%,rgba(234,241,255,0.88)_100%)] p-5 shadow-soft sm:rounded-[1.6rem] sm:p-6">
                   <div className="flex items-start justify-between gap-4">
                     <div>
-                      <p className="font-display text-[1.8rem] leading-[1.02] tracking-[-0.04em] text-ink">
+                      <p className="font-display text-[1.55rem] leading-[1.02] tracking-[-0.04em] text-ink sm:text-[1.8rem]">
                         Мансур Табынский
                       </p>
                       <p className="mt-3 text-sm font-semibold uppercase tracking-[0.22em] text-accentDeep">
@@ -389,11 +389,11 @@ export function HomePage() {
                   </div>
 
                   <div className="mt-8 grid gap-3 text-sm text-steelDeep">
-                    <div className="flex items-center justify-between gap-4 rounded-[1rem] border border-white/70 bg-white/72 px-4 py-3">
+                    <div className="flex flex-col items-start gap-1.5 rounded-[1rem] border border-white/70 bg-white/72 px-4 py-3 sm:flex-row sm:items-center sm:justify-between sm:gap-4">
                       <span className="uppercase tracking-[0.18em] text-[11px] text-steel">Education</span>
                       <span className="text-right font-medium text-ink">Al Qasimia University</span>
                     </div>
-                    <div className="flex items-center justify-between gap-4 rounded-[1rem] border border-white/70 bg-white/72 px-4 py-3">
+                    <div className="flex flex-col items-start gap-1.5 rounded-[1rem] border border-white/70 bg-white/72 px-4 py-3 sm:flex-row sm:items-center sm:justify-between sm:gap-4">
                       <span className="uppercase tracking-[0.18em] text-[11px] text-steel">Location</span>
                       <span className="text-right font-medium text-ink">United Arab Emirates</span>
                     </div>
@@ -403,15 +403,15 @@ export function HomePage() {
             </Reveal>
 
             <Reveal delay={90}>
-              <div className="card-surface rounded-[2rem] p-7 sm:p-8 lg:p-9">
-                <p className="max-w-[19ch] font-display text-[2rem] leading-[1.06] tracking-[-0.04em] text-ink sm:text-[2.35rem] lg:text-[2.7rem]">
+              <div className="card-surface rounded-[1.75rem] p-5 sm:rounded-[2rem] sm:p-8 lg:p-9">
+                <p className="max-w-[19ch] font-display text-[1.65rem] leading-[1.08] tracking-[-0.04em] text-ink sm:text-[2.35rem] lg:text-[2.7rem]">
                   Создаю современные цифровые продукты и <span className="whitespace-nowrap">AI-решения</span> для
                   реальных бизнес-задач.
                 </p>
 
                 <div className="mt-6 h-px w-full bg-[linear-gradient(90deg,rgba(31,79,209,0.24)_0%,rgba(221,228,239,0.95)_24%,rgba(221,228,239,0.95)_100%)]" />
 
-                <div className="mt-6 grid max-w-[43rem] gap-4 text-[1rem] leading-7 text-steelDeep sm:text-[1.04rem]">
+                <div className="mt-6 grid max-w-[43rem] gap-4 text-[0.98rem] leading-7 text-steelDeep sm:text-[1.04rem]">
                   <p className="max-w-[56ch]">
                     Я студент факультета экономики в Al Qasimia University и параллельно развиваюсь в веб-разработке,
                     автоматизации и AI.
@@ -444,7 +444,7 @@ export function HomePage() {
         </div>
       </section>
 
-      <section id="services" className="section-shell px-6 lg:px-8">
+      <section id="services" className="section-shell px-4 sm:px-5 lg:px-8">
         <div className="mx-auto max-w-7xl">
           <Reveal>
             <SectionTitle
@@ -453,18 +453,18 @@ export function HomePage() {
               description="Создаю и внедряю цифровые решения, которые соединяют сильный визуальный стиль, понятную структуру и практическую ценность для бизнеса."
             />
           </Reveal>
-          <div className="mt-16 grid gap-6 lg:grid-cols-3">
+          <div className="mt-14 grid gap-5 md:grid-cols-2 lg:mt-16 lg:grid-cols-3">
             {services.map((service, index) => (
               <Reveal key={service.title} delay={index * 90}>
                 <article
-                  className={`group flex h-full flex-col rounded-[1.9rem] border p-8 transition duration-300 hover:-translate-y-1 hover:shadow-panel sm:p-9 ${
+                  className={`group flex h-full flex-col rounded-[1.75rem] border p-6 transition duration-300 hover:-translate-y-1 hover:shadow-panel sm:p-7 lg:rounded-[1.9rem] lg:p-9 ${
                     service.featured
                       ? "border-ink/10 bg-[linear-gradient(145deg,_#050816_0%,_#0f234f_56%,_#1f4fd1_100%)] text-white shadow-panel"
                       : "card-surface hover:border-accent/24"
                   }`}
                 >
                   <div
-                    className={`flex h-16 w-16 items-center justify-center rounded-[1.35rem] border text-[1.25rem] transition duration-300 group-hover:-translate-y-1 ${
+                    className={`flex h-14 w-14 items-center justify-center rounded-[1.2rem] border text-[1.1rem] transition duration-300 group-hover:-translate-y-1 sm:h-16 sm:w-16 sm:rounded-[1.35rem] sm:text-[1.25rem] ${
                       service.featured
                         ? "border-white/12 bg-white/10 text-white"
                         : "border-lineStrong bg-[linear-gradient(180deg,rgba(255,255,255,0.96)_0%,rgba(235,242,255,0.9)_100%)] text-accentDeep"
@@ -473,14 +473,14 @@ export function HomePage() {
                     {service.icon}
                   </div>
                   <h3
-                    className={`mt-8 font-display text-[2rem] leading-[1.02] tracking-[-0.035em] ${
+                    className={`mt-6 font-display text-[1.7rem] leading-[1.02] tracking-[-0.035em] sm:mt-8 sm:text-[2rem] ${
                       service.featured ? "text-white" : "text-ink"
                     }`}
                   >
                     {service.title}
                   </h3>
                   <p
-                    className={`mt-5 max-w-[34ch] text-[1rem] leading-7 ${
+                    className={`mt-4 max-w-[34ch] text-[0.98rem] leading-7 sm:mt-5 ${
                       service.featured ? "text-white/76" : "text-steelDeep"
                     }`}
                   >
@@ -514,7 +514,7 @@ export function HomePage() {
         </div>
       </section>
 
-      <section className="section-shell px-6 lg:px-8">
+      <section className="section-shell px-4 sm:px-5 lg:px-8">
         <div className="mx-auto max-w-7xl">
           <Reveal>
             <SectionTitle
@@ -523,12 +523,12 @@ export function HomePage() {
               description="Технологии и инструменты, с которыми я создаю визуально сильные и полезные цифровые продукты."
             />
           </Reveal>
-          <Reveal delay={80} className="card-surface mt-16 rounded-[1.9rem] p-6 sm:p-8">
+          <Reveal delay={80} className="card-surface mt-14 rounded-[1.75rem] p-5 sm:mt-16 sm:rounded-[1.9rem] sm:p-8">
             <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
               {skills.map((skill) => (
                 <div
                   key={skill}
-                  className="rounded-[1.25rem] border border-line bg-white/72 px-5 py-4 text-base font-medium text-ink shadow-[inset_0_1px_0_rgba(255,255,255,0.7)] transition duration-300 hover:-translate-y-0.5 hover:border-accent/35 hover:bg-accentSoft/35"
+                  className="rounded-[1.25rem] border border-line bg-white/72 px-4 py-3 text-sm font-medium text-ink shadow-[inset_0_1px_0_rgba(255,255,255,0.7)] transition duration-300 hover:-translate-y-0.5 hover:border-accent/35 hover:bg-accentSoft/35 sm:px-5 sm:py-4 sm:text-base"
                 >
                   {skill}
                 </div>
@@ -538,7 +538,7 @@ export function HomePage() {
         </div>
       </section>
 
-      <section id="projects" className="section-shell px-6 lg:px-8">
+      <section id="projects" className="section-shell px-4 sm:px-5 lg:px-8">
         <div className="mx-auto max-w-7xl">
           <Reveal>
             <SectionTitle
@@ -547,32 +547,32 @@ export function HomePage() {
               description="Каждый проект решает конкретную задачу: презентация продукта, рост доверия, удобство взаимодействия или автоматизация процессов."
             />
           </Reveal>
-          <div className="mt-16 grid gap-6 lg:grid-cols-2">
+          <div className="mt-14 grid gap-5 md:grid-cols-2 lg:mt-16 lg:gap-6">
             {projects.map((project, index) => (
               <Reveal key={project.slug} delay={index * 80}>
                 <Link
                   to={`/projects/${project.slug}`}
-                  className="group card-surface flex h-full flex-col overflow-hidden rounded-[1.9rem] transition duration-300 hover:-translate-y-1 hover:shadow-panel"
+                  className="group card-surface flex h-full flex-col overflow-hidden rounded-[1.75rem] transition duration-300 hover:-translate-y-1 hover:shadow-panel lg:rounded-[1.9rem]"
                 >
-                  <div className={`h-56 shrink-0 bg-gradient-to-br ${project.accent} p-8`}>
+                  <div className={`aspect-[1.28/1] shrink-0 bg-gradient-to-br ${project.accent} p-6 sm:p-7 lg:h-56 lg:aspect-auto lg:p-8`}>
                     <div className="flex h-full items-end justify-between">
                       <div>
                         <p className="text-sm uppercase tracking-[0.24em] text-ink/60">{project.category}</p>
-                        <h3 className="mt-3 font-display text-4xl tracking-[-0.03em] text-ink">{project.name}</h3>
+                        <h3 className="mt-3 font-display text-[2rem] tracking-[-0.03em] text-ink sm:text-4xl">{project.name}</h3>
                       </div>
-                      <div className="rounded-full border border-ink/10 bg-white/70 px-4 py-2 text-sm text-ink shadow-sm">
+                      <div className="rounded-full border border-ink/10 bg-white/70 px-3.5 py-2 text-xs text-ink shadow-sm sm:px-4 sm:text-sm">
                         {project.year}
                       </div>
                     </div>
                   </div>
-                  <div className="flex flex-1 flex-col p-8">
+                  <div className="flex flex-1 flex-col p-6 sm:p-7 lg:p-8">
                     {project.confidential ? (
                       <div className="mb-4 inline-flex rounded-full border border-accent/20 bg-accentSoft/50 px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.18em] text-accentDeep">
                         Confidential
                       </div>
                     ) : null}
-                    <p className="text-xl font-semibold tracking-[-0.02em] text-ink">{project.subtitle}</p>
-                    <p className="mt-4 flex-1 text-measure leading-7 text-steel">{project.summary}</p>
+                    <p className="text-lg font-semibold tracking-[-0.02em] text-ink sm:text-xl">{project.subtitle}</p>
+                    <p className="mt-3 flex-1 text-measure text-[0.98rem] leading-7 text-steel sm:mt-4">{project.summary}</p>
                     <div className="mt-6 flex items-center gap-3 text-sm font-semibold text-accent">
                       <span>Открыть проект</span>
                       <span className="transition duration-300 group-hover:translate-x-1">
@@ -587,7 +587,7 @@ export function HomePage() {
         </div>
       </section>
 
-      <section className="section-shell px-6 lg:px-8">
+      <section className="section-shell px-4 sm:px-5 lg:px-8">
         <div className="mx-auto max-w-7xl">
           <Reveal>
             <SectionTitle
@@ -600,7 +600,7 @@ export function HomePage() {
             {reasons.map((reason, index) => (
               <Reveal key={reason.title} delay={index * 70}>
                 <div
-                  className={`group flex h-full flex-col rounded-[1.75rem] border p-8 transition duration-300 hover:-translate-y-1 hover:shadow-panel sm:p-9 ${
+                  className={`group flex h-full flex-col rounded-[1.75rem] border p-6 transition duration-300 hover:-translate-y-1 hover:shadow-panel sm:p-8 lg:p-9 ${
                     reason.featured
                       ? "border-ink/10 bg-[linear-gradient(145deg,_#050816_0%,_#123182_55%,_#1f4fd1_100%)] text-white shadow-panel"
                       : "card-surface hover:border-accent/25"
@@ -626,7 +626,7 @@ export function HomePage() {
                   </div>
 
                   <h3
-                    className={`mt-10 font-display text-[1.9rem] leading-[1.02] tracking-[-0.035em] ${
+                    className={`mt-8 font-display text-[1.55rem] leading-[1.04] tracking-[-0.035em] sm:mt-10 sm:text-[1.9rem] ${
                       reason.featured ? "text-white" : "text-ink"
                     }`}
                   >
@@ -651,23 +651,23 @@ export function HomePage() {
         </div>
       </section>
 
-      <section className="section-shell px-6 lg:px-8">
-        <div className="mx-auto max-w-7xl rounded-[2.5rem] bg-[linear-gradient(145deg,_#050816_0%,_#0e1832_52%,_#13389e_100%)] px-8 py-12 text-white shadow-panel sm:px-12">
+      <section className="section-shell px-4 sm:px-5 lg:px-8">
+        <div className="mx-auto max-w-7xl rounded-[2rem] bg-[linear-gradient(145deg,_#050816_0%,_#0e1832_52%,_#13389e_100%)] px-5 py-8 text-white shadow-panel sm:rounded-[2.25rem] sm:px-8 sm:py-10 lg:rounded-[2.5rem] lg:px-12 lg:py-12">
           <Reveal>
             <div className="max-w-3xl">
               <p className="mb-4 text-[11px] font-semibold uppercase tracking-[0.34em] text-white/60">Workflow</p>
-              <h2 className="font-display text-[2.4rem] leading-[1.02] tracking-[-0.03em] text-white sm:text-[3.35rem]">
+              <h2 className="font-display text-[2rem] leading-[1.04] tracking-[-0.03em] text-white sm:text-[3.35rem]">
                 Этапы работы
               </h2>
-              <p className="mt-6 max-w-[40rem] text-lg leading-8 text-white/74">
+              <p className="mt-5 max-w-[40rem] text-base leading-7 text-white/74 sm:mt-6 sm:text-lg sm:leading-8">
                 Понятный и прозрачный процесс от первого обсуждения до запуска и поддержки.
               </p>
             </div>
           </Reveal>
-          <div className="mt-16 grid gap-5 md:grid-cols-2 xl:grid-cols-6">
+          <div className="mt-12 grid gap-4 md:grid-cols-2 xl:mt-16 xl:grid-cols-6 xl:gap-5">
             {steps.map((step, index) => (
               <Reveal key={step} delay={index * 70}>
-                <div className="rounded-[1.5rem] border border-white/10 bg-white/6 p-6 shadow-[inset_0_1px_0_rgba(255,255,255,0.08)] transition duration-300 hover:-translate-y-0.5 hover:bg-white/10">
+                <div className="rounded-[1.35rem] border border-white/10 bg-white/6 p-5 shadow-[inset_0_1px_0_rgba(255,255,255,0.08)] transition duration-300 hover:-translate-y-0.5 hover:bg-white/10 sm:rounded-[1.5rem] sm:p-6">
                   <p className="text-sm uppercase tracking-[0.2em] text-white/50">0{index + 1}</p>
                   <p className="mt-6 text-lg leading-7">{step}</p>
                 </div>
@@ -677,25 +677,25 @@ export function HomePage() {
         </div>
       </section>
 
-      <section className="section-shell px-6 lg:px-8">
-        <div className="card-surface mx-auto max-w-7xl rounded-[2rem] border-dashed p-10 text-center">
+      <section className="section-shell px-4 sm:px-5 lg:px-8">
+        <div className="card-surface mx-auto max-w-7xl rounded-[1.75rem] border-dashed p-6 text-center sm:rounded-[2rem] sm:p-10">
           <Reveal>
             <p className="text-sm uppercase tracking-[0.28em] text-accent">Reviews</p>
-            <h2 className="mt-4 font-display text-4xl tracking-[-0.03em] text-ink">Отзывы можно добавить следующим этапом</h2>
-            <p className="mx-auto mt-5 max-w-2xl text-lg leading-8 text-steel">
+            <h2 className="mt-4 font-display text-[2rem] tracking-[-0.03em] text-ink sm:text-4xl">Отзывы можно добавить следующим этапом</h2>
+            <p className="mx-auto mt-5 max-w-2xl text-base leading-7 text-steel sm:text-lg sm:leading-8">
               Блок уже заложен в структуру сайта, поэтому отзывы клиентов и кейсы можно подключить позже без редизайна.
             </p>
           </Reveal>
         </div>
       </section>
 
-      <section id="contact" className="section-shell px-6 lg:px-8">
+      <section id="contact" className="section-shell px-4 sm:px-5 lg:px-8">
         <div className="mx-auto max-w-7xl">
-          <div className="relative overflow-hidden rounded-[2.5rem] border border-white/80 bg-[linear-gradient(180deg,rgba(255,255,255,0.92)_0%,rgba(248,250,255,0.98)_100%)] px-6 py-8 shadow-panel sm:px-8 sm:py-10 lg:px-10 lg:py-12">
-            <div className="absolute -left-14 top-8 h-44 w-44 rounded-full bg-accent/10 blur-3xl" />
-            <div className="absolute right-0 top-0 h-56 w-56 rounded-full bg-[radial-gradient(circle,rgba(31,79,209,0.12)_0%,rgba(31,79,209,0)_66%)]" />
+          <div className="relative overflow-hidden rounded-[2rem] border border-white/80 bg-[linear-gradient(180deg,rgba(255,255,255,0.92)_0%,rgba(248,250,255,0.98)_100%)] px-5 py-6 shadow-panel sm:rounded-[2.25rem] sm:px-8 sm:py-10 lg:rounded-[2.5rem] lg:px-10 lg:py-12">
+            <div className="absolute -left-10 top-4 h-28 w-28 rounded-full bg-accent/10 blur-2xl sm:-left-14 sm:top-8 sm:h-44 sm:w-44 sm:blur-3xl" />
+            <div className="absolute right-0 top-0 h-40 w-40 rounded-full bg-[radial-gradient(circle,rgba(31,79,209,0.12)_0%,rgba(31,79,209,0)_66%)] sm:h-56 sm:w-56" />
             <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_left,rgba(255,255,255,0.9)_0%,rgba(255,255,255,0)_36%)]" />
-            <div className="relative grid gap-8 lg:grid-cols-[0.82fr_1.18fr] lg:gap-10">
+            <div className="relative grid gap-6 sm:gap-8 lg:grid-cols-[0.82fr_1.18fr] lg:gap-10">
           <Reveal>
                 <div className="max-w-[31rem]">
                   <div className="flex items-center gap-3 text-[11px] font-semibold uppercase tracking-[0.34em] text-accent">
@@ -703,10 +703,10 @@ export function HomePage() {
                     <span className="h-px w-10 bg-accent/35" />
                     <span>05</span>
                   </div>
-                  <h2 className="mt-5 font-display text-[2.3rem] leading-[1.02] tracking-[-0.04em] text-ink sm:text-[2.9rem] lg:text-[3.25rem]">
+                  <h2 className="mt-5 font-display text-[2rem] leading-[1.04] tracking-[-0.04em] text-ink sm:text-[2.9rem] lg:text-[3.25rem]">
                     Есть идея? Давайте превратим её в цифровой продукт
                   </h2>
-                  <p className="mt-6 max-w-[35rem] text-lg leading-8 text-steelDeep">
+                  <p className="mt-5 max-w-[35rem] text-base leading-7 text-steelDeep sm:mt-6 sm:text-lg sm:leading-8">
                     Если вам нужен современный сайт, AI-решение или автоматизация процессов, можно написать удобным
                     способом и спокойно обсудить задачу.
                   </p>
@@ -732,7 +732,7 @@ export function HomePage() {
                     href={contact.href}
                     target="_blank"
                     rel="noreferrer"
-                    className={`group block rounded-[2rem] border p-6 shadow-soft transition duration-300 hover:-translate-y-1 hover:shadow-panel sm:p-7 ${
+                    className={`group block rounded-[1.75rem] border p-5 shadow-soft transition duration-300 hover:-translate-y-1 hover:shadow-panel sm:rounded-[2rem] sm:p-7 ${
                       contact.primary
                         ? "border-accent/18 bg-[linear-gradient(180deg,rgba(235,242,255,0.94)_0%,rgba(255,255,255,0.98)_100%)] hover:border-accent/30"
                         : "border-lineStrong/95 bg-white/82 hover:border-accent/24"
@@ -754,10 +754,10 @@ export function HomePage() {
                           {contact.label}
                           </p>
                         </div>
-                        <p className="mt-4 [overflow-wrap:anywhere] font-display text-[1.7rem] leading-[1.04] tracking-[-0.04em] text-ink sm:text-[1.95rem]">
+                        <p className="mt-4 [overflow-wrap:anywhere] font-display text-[1.45rem] leading-[1.04] tracking-[-0.04em] text-ink sm:text-[1.95rem]">
                           {contact.value}
                         </p>
-                        <p className="mt-4 max-w-[34rem] text-base leading-7 text-steelDeep">{contact.note}</p>
+                        <p className="mt-4 max-w-[34rem] text-sm leading-6 text-steelDeep sm:text-base sm:leading-7">{contact.note}</p>
                       </div>
                       <div className="mt-1 flex h-11 w-11 shrink-0 items-center justify-center rounded-2xl border border-lineStrong bg-white/90 text-accent transition duration-300 group-hover:translate-x-1 group-hover:border-accent/30">
                         <ArrowIcon />
@@ -771,7 +771,7 @@ export function HomePage() {
             </div>
 
             <Reveal delay={180}>
-              <div className="relative mt-8 border-t border-lineStrong/80 pt-6 text-sm uppercase tracking-[0.22em] text-steel">
+              <div className="relative mt-8 border-t border-lineStrong/80 pt-6 text-[11px] uppercase tracking-[0.18em] text-steel sm:text-sm sm:tracking-[0.22em]">
                 Web Development · AI · Automation · Kazakhstan / UAE
               </div>
             </Reveal>
@@ -779,7 +779,7 @@ export function HomePage() {
         </div>
       </section>
 
-      <footer className="border-t border-line/80 px-6 py-8 lg:px-8">
+      <footer className="border-t border-line/80 px-4 py-8 sm:px-5 lg:px-8">
         <div className="mx-auto flex max-w-7xl flex-col gap-5 text-sm text-steel sm:flex-row sm:items-center sm:justify-between">
           <p>© 2026 Мансур Табынский. Все права защищены.</p>
           <div className="flex flex-wrap gap-5">
