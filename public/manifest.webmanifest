@@ -1,0 +1,15 @@
+{
+  "name": "Mansur Tabynskiy Portfolio",
+  "short_name": "Mansur",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#080808",
+  "theme_color": "#0b0b0b",
+  "icons": [
+    {
+      "src": "/favicon.svg",
+      "sizes": "64x64",
+      "type": "image/svg+xml"
+    }
+  ]
+}

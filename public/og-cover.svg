@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" fill="none">
+  <rect width="1200" height="630" fill="#080808"/>
+  <circle cx="980" cy="128" r="220" fill="#FF6B35" fill-opacity="0.18"/>
+  <circle cx="220" cy="560" r="180" fill="#FF6B35" fill-opacity="0.12"/>
+  <path d="M102 114H1098" stroke="white" stroke-opacity=".08"/>
+  <path d="M102 516H1098" stroke="white" stroke-opacity=".08"/>
+  <text x="100" y="245" fill="#F5F5F2" font-family="Manrope, sans-serif" font-size="34" letter-spacing="4">WEB DEVELOPMENT · AI · AUTOMATION</text>
+  <text x="100" y="342" fill="#F5F5F2" font-family="Manrope, sans-serif" font-size="108" font-weight="800">MANSUR</text>
+  <text x="100" y="448" fill="#F5F5F2" font-family="Manrope, sans-serif" font-size="108" font-weight="800">TABYNSKIY</text>
+  <text x="100" y="532" fill="#9B9B96" font-family="Manrope, sans-serif" font-size="32">Modern websites and AI-powered business solutions.</text>
+</svg>
