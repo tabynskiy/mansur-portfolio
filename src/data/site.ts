@@ -17,31 +17,38 @@ export const navigation = [
 
 export const services: LocalizedItem[] = [
   {
-    title: { ru: "Лендинги и промо-сайты", en: "Landing pages and promo sites" },
+    title: { ru: "Лендинги", en: "Landing Pages" },
     description: {
-      ru: "Короткие, сильные сайты для услуги, продукта или эксперта.",
+      ru: "Короткие и сильные сайты для услуги, продукта или эксперта.",
       en: "Focused, high-clarity websites for a service, product, or expert.",
     },
   },
   {
-    title: { ru: "Корпоративные сайты", en: "Business websites" },
+    title: { ru: "Корпоративные сайты", en: "Corporate Websites" },
     description: {
-      ru: "Многостраничные сайты с понятной структурой, кейсами и маршрутами для клиента.",
-      en: "Multi-page websites with clear structure, case studies, and conversion paths.",
+      ru: "Многостраничные сайты с четкой структурой и понятной подачей компании.",
+      en: "Multi-page websites with clear structure and strong company presentation.",
     },
   },
   {
-    title: { ru: "Редизайн и визуальная система", en: "Redesign and visual system" },
+    title: { ru: "Интернет-магазины", en: "Online Stores" },
     description: {
-      ru: "Пересборка устаревшего сайта в более спокойную и дорогую подачу.",
-      en: "Reworking an outdated site into a calmer and more premium presentation.",
+      ru: "Аккуратные e-commerce интерфейсы с акцентом на доверие и удобство покупки.",
+      en: "Clean e-commerce interfaces focused on trust and a smooth purchase path.",
     },
   },
   {
-    title: { ru: "AI и автоматизация", en: "AI and automation" },
+    title: { ru: "AI Automation", en: "AI Automation" },
     description: {
-      ru: "Практичные AI-сценарии и автоматизация коммуникаций вокруг сайта.",
-      en: "Practical AI workflows and communication automation around the website.",
+      ru: "Практичные AI-сценарии и автоматизация процессов вокруг сайта и заявок.",
+      en: "Practical AI workflows and automation around websites and incoming leads.",
+    },
+  },
+  {
+    title: { ru: "Редизайн сайтов", en: "Website Redesign" },
+    description: {
+      ru: "Пересборка устаревшего сайта в более спокойную, современную и дорогую систему.",
+      en: "Reworking an outdated website into a calmer, more modern, and premium system.",
     },
   },
 ];
@@ -93,15 +100,15 @@ export const reasons = [
   {
     title: { ru: "Ясная подача", en: "Clear presentation" },
     description: {
-      ru: "Каждая секция работает на смысл, а не на визуальный шум.",
-      en: "Each section is there to communicate value, not visual noise.",
+      ru: "Каждая секция помогает объяснять ценность, а не создавать шум.",
+      en: "Each section is designed to explain value, not create noise.",
     },
   },
   {
     title: { ru: "Современная адаптивность", en: "Modern responsiveness" },
     description: {
-      ru: "Сайт сразу проектируется для desktop, laptop и mobile.",
-      en: "The site is designed for desktop, laptop, and mobile from day one.",
+      ru: "Сайт сразу проектируется для desktop, laptop, tablet и mobile.",
+      en: "The site is designed for desktop, laptop, tablet, and mobile from day one.",
     },
   },
   {
@@ -114,7 +121,7 @@ export const reasons = [
   {
     title: { ru: "Фокус на результате", en: "Result-first mindset" },
     description: {
-      ru: "Целью остается не эффект, а рабочий инструмент для бизнеса.",
+      ru: "В центре не эффект, а рабочий инструмент для бизнеса.",
       en: "The goal is not spectacle but a useful business tool.",
     },
   },

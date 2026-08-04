@@ -27,17 +27,33 @@ export const t = {
   home: {
     eyebrow: { ru: "WEB DEVELOPMENT - AI - AUTOMATION", en: "WEB DEVELOPMENT - AI - AUTOMATION" },
     heroTitle: {
-      ru: "САЙТЫ И AI-РЕШЕНИЯ\nДЛЯ РОСТА\nБИЗНЕСА",
-      en: "WEBSITES AND AI SOLUTIONS\nFOR BUSINESS\nGROWTH",
+      ru: "СОЗДАЮ САЙТЫ\nИ AI-ПРОДУКТЫ,\nКОТОРЫЕ РАСТЯТ БИЗНЕС",
+      en: "I BUILD WEBSITES\nAND AI PRODUCTS\nTHAT HELP BUSINESSES GROW",
     },
     heroText: {
-      ru: "Создаю спокойные, современные и понятные сайты, которые помогают бизнесу выглядеть сильнее, объяснять ценность и получать обращения.",
-      en: "I create calm, modern, and clear websites that help businesses look stronger, explain value, and win enquiries.",
+      ru: "Создаю цифровые продукты для бизнеса: от сильной упаковки до автоматизации процессов.",
+      en: "I create digital products for business: from strong presentation to process automation.",
     },
-    introLabel: { ru: "Подход", en: "Approach" },
-    introText: {
-      ru: "Минималистичная подача, ясная структура и аккуратная разработка без визуального перегруза.",
-      en: "Minimal presentation, clear structure, and careful development without visual overload.",
+    introLabel: { ru: "ПОДХОД", en: "APPROACH" },
+    introTitle: {
+      ru: "СНАЧАЛА ЗАДАЧА БИЗНЕСА.\nЗАТЕМ СТРУКТУРА, ДИЗАЙН И РАЗРАБОТКА.",
+      en: "BUSINESS TASK FIRST.\nTHEN STRUCTURE, DESIGN, AND DEVELOPMENT.",
+    },
+    introBody: {
+      ru: "Я не начинаю работу с визуальных эффектов. Сначала изучаю задачу, аудиторию и бизнес-логику проекта. После этого выстраиваю структуру, создаю дизайн и перехожу к технической реализации.",
+      en: "I do not start with visual effects. First, I study the task, the audience, and the business logic of the project. After that, I shape the structure, create the design, and move into technical implementation.",
+    },
+    introPoints: {
+      ru: [
+        "Понятная структура",
+        "Спокойный и выразительный дизайн",
+        "Аккуратная техническая реализация",
+      ],
+      en: [
+        "Clear structure",
+        "Calm and expressive design",
+        "Careful technical implementation",
+      ],
     },
     projectsTitle: { ru: "ИЗБРАННЫЕ ПРОЕКТЫ", en: "SELECTED PROJECTS" },
     servicesTitle: { ru: "УСЛУГИ", en: "SERVICES" },

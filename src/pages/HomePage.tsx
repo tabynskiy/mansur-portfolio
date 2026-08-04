@@ -1,4 +1,4 @@
-import { FormEvent, useMemo, useState } from "react";
+import { FormEvent, useEffect, useMemo, useState } from "react";
 import { Link } from "react-router-dom";
 import { motion, useReducedMotion } from "framer-motion";
 import { contacts, legalText, navigation, processSteps, reasons, services, siteUrl, technologies } from "../data/site";
@@ -29,9 +29,37 @@ const Header = ({
   setLanguage: (language: Language) => void;
 }) => {
   const [menuOpen, setMenuOpen] = useState(false);
+  const [activeSection, setActiveSection] = useState<string>(navigation[0]?.id ?? "projects");
+  const [isScrolled, setIsScrolled] = useState(false);
+
+  useEffect(() => {
+    const sectionIds = navigation.map((item) => item.id);
+
+    const updateActiveSection = () => {
+      setIsScrolled(window.scrollY > 12);
+
+      const current = sectionIds.find((id) => {
+        const element = document.getElementById(id);
+        if (!element) {
+          return false;
+        }
+
+        const rect = element.getBoundingClientRect();
+        return rect.top <= 140 && rect.bottom >= 140;
+      });
+
+      if (current) {
+        setActiveSection(current);
+      }
+    };
+
+    updateActiveSection();
+    window.addEventListener("scroll", updateActiveSection, { passive: true });
+    return () => window.removeEventListener("scroll", updateActiveSection);
+  }, []);
 
   return (
-    <header className="site-header">
+    <header className={`site-header ${isScrolled ? "site-header--scrolled" : ""}`}>
       <div className="container site-header__inner">
         <Link to="/" className="brand" aria-label="Mansur Tabynskiy">
           <span className="brand__name">MANSUR TABYNSKIY</span>
@@ -40,7 +68,11 @@ const Header = ({
 
         <nav className="site-nav" aria-label="Primary">
           {navigation.map((item) => (
-            <a key={item.id} href={`#${item.id}`} className="site-nav__link">
+            <a
+              key={item.id}
+              href={`#${item.id}`}
+              className={`site-nav__link ${activeSection === item.id ? "is-active" : ""}`}
+            >
               {item.label[language]}
             </a>
           ))}
@@ -113,10 +145,66 @@ const SectionTitle = ({
   </div>
 );
 
+const pointMotion = (index: number, reduceMotion: boolean) => ({
+  initial: { opacity: 0, y: reduceMotion ? 0 : 16 },
+  whileInView: { opacity: 1, y: 0 },
+  viewport: { once: true, amount: 0.3 },
+  transition: {
+    duration: reduceMotion ? 0 : 0.5,
+    delay: reduceMotion ? 0 : index * 0.08,
+  },
+});
+
 export const HomePage = ({ language, setLanguage }: HomePageProps) => {
   const reduceMotion = useReducedMotion();
   const featuredProjects = projects.slice(0, 3);
-  const heroProject = projects[0];
+  const serviceIcons = ["🌐", "🏢", "🛒", "🤖", "🎨"];
+  const reasonIcons = ["◦", "⌁", "—", "✦"];
+  const heroServices = useMemo(
+    () =>
+      language === "ru"
+        ? [
+            "ЛЕНДИНГИ",
+            "ИНТЕРНЕТ-МАГАЗИНЫ",
+            "КОРПОРАТИВНЫЕ САЙТЫ",
+            "САЙТЫ ДЛЯ ЛИЧНОГО БРЕНДА",
+            "ОНЛАЙН-МЕНЮ",
+            "РЕДИЗАЙН САЙТОВ",
+            "AI-АВТОМАТИЗАЦИЯ",
+            "ИНТЕГРАЦИИ И ФОРМЫ ЗАЯВОК",
+          ]
+        : [
+            "LANDING PAGES",
+            "ONLINE STORES",
+            "BUSINESS WEBSITES",
+            "PERSONAL BRAND SITES",
+            "ONLINE MENUS",
+            "WEBSITE REDESIGN",
+            "AI AUTOMATION",
+            "INTEGRATIONS AND LEAD FORMS",
+          ],
+    [language],
+  );
+  const [heroServiceIndex, setHeroServiceIndex] = useState(0);
+  const aboutDetails = useMemo(
+    () =>
+      language === "ru"
+        ? [
+            { label: "Фокус", value: "Сайты, AI-решения, автоматизация бизнес-процессов" },
+            { label: "Стек", value: "React, TypeScript, Vite, Framer Motion, GitHub" },
+            { label: "Языки", value: "Русский, English" },
+            { label: "Проекты", value: "Предприниматели, эксперты, образовательные проекты, компании" },
+            { label: "Формат", value: "Структура, дизайн, разработка и запуск в одном процессе" },
+          ]
+        : [
+            { label: "Focus", value: "Websites, AI solutions, and business process automation" },
+            { label: "Stack", value: "React, TypeScript, Vite, Framer Motion, GitHub" },
+            { label: "Languages", value: "Russian, English" },
+            { label: "Projects", value: "Entrepreneurs, experts, education projects, and companies" },
+            { label: "Format", value: "Structure, design, development, and launch in one process" },
+          ],
+    [language],
+  );
 
   useMeta({
     title: text(t.seo.title, language),
@@ -142,6 +230,22 @@ export const HomePage = ({ language, setLanguage }: HomePageProps) => {
   });
 
   const heroLines = useMemo(() => text(t.home.heroTitle, language).split("\n"), [language]);
+
+  useEffect(() => {
+    setHeroServiceIndex(0);
+  }, [language]);
+
+  useEffect(() => {
+    if (reduceMotion) {
+      return undefined;
+    }
+
+    const interval = window.setInterval(() => {
+      setHeroServiceIndex((current) => (current + 1) % heroServices.length);
+    }, 2400);
+
+    return () => window.clearInterval(interval);
+  }, [heroServices, reduceMotion]);
 
   const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
@@ -175,7 +279,7 @@ export const HomePage = ({ language, setLanguage }: HomePageProps) => {
 
       <main>
         <section className="hero">
-          <div className="container hero__grid">
+          <div className="container hero__center">
             <motion.div
               className="hero__content"
               initial={{ opacity: 0, y: reduceMotion ? 0 : 24 }}
@@ -183,13 +287,24 @@ export const HomePage = ({ language, setLanguage }: HomePageProps) => {
               transition={{ duration: reduceMotion ? 0 : 0.6 }}
             >
               <p className="eyebrow">{text(t.home.eyebrow, language)}</p>
-              <h1 className="hero__title">
-                {heroLines.map((line) => (
-                  <span key={line} className="hero__title-line">
-                    {line}
+              <div className="hero__title" aria-label={text(t.home.heroTitle, language).replace(/\n/g, " ")}>
+                {heroLines.map((line, index) => (
+                  <span key={line} className="hero__title-mask">
+                    <motion.span
+                      className="hero__title-line"
+                      initial={reduceMotion ? { opacity: 1, y: 0, filter: "blur(0px)" } : { opacity: 0, y: 48, filter: "blur(8px)" }}
+                      animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+                      transition={{
+                        duration: reduceMotion ? 0 : 0.95,
+                        delay: reduceMotion ? 0 : index * 0.11,
+                        ease: [0.22, 1, 0.36, 1],
+                      }}
+                    >
+                      {line}
+                    </motion.span>
                   </span>
                 ))}
-              </h1>
+              </div>
               <p className="hero__text">{text(t.home.heroText, language)}</p>
               <div className="hero__actions">
                 <a className="button" href="#projects">
@@ -202,64 +317,54 @@ export const HomePage = ({ language, setLanguage }: HomePageProps) => {
               <div className="hero__meta">
                 <span>{text(t.common.based, language)}</span>
                 <span>{text(t.common.available, language)}</span>
-                <span>{text(t.common.scrollToExplore, language)}</span>
               </div>
-            </motion.div>
-
-            <motion.div
-              className="hero__visual"
-              initial={{ opacity: 0, y: reduceMotion ? 0 : 24 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: reduceMotion ? 0 : 0.7, delay: reduceMotion ? 0 : 0.08 }}
-            >
-              <article className="hero-preview">
-                <div className="hero-preview__bar">
-                  <span />
-                  <span />
-                  <span />
-                </div>
-                <div className="hero-preview__body">
-                  <div className="hero-preview__meta">
-                    <span>{language === "ru" ? "Избранный проект" : "Featured project"}</span>
-                    <span>{heroProject.year}</span>
-                  </div>
-                  <div className="hero-preview__copy">
-                    <p className="hero-preview__eyebrow">{heroProject.category[language]}</p>
-                    <strong>{heroProject.title}</strong>
-                    <p>{heroProject.summary[language]}</p>
-                  </div>
-                  <div className="hero-preview__surface">
-                    <div className="hero-preview__surface-main">
-                      <span>{text(t.project.role, language)}</span>
-                      <strong>{heroProject.role[language]}</strong>
-                    </div>
-                    <div className="hero-preview__surface-main hero-preview__surface-main--compact">
-                      <span>{language === "ru" ? "Ключевой акцент" : "Key focus"}</span>
-                      <strong>{heroProject.mediaTitle[language]}</strong>
-                    </div>
-                  </div>
-                  <div className="hero-preview__tags" aria-label="Project tags">
-                    {heroProject.technologies.slice(0, 3).map((tag) => (
-                      <span key={tag} className="hero-preview__tag">
-                        {tag}
-                      </span>
-                    ))}
-                  </div>
-                  <Link className="button button--ghost hero-preview__cta" to={`/projects/${heroProject.slug}`}>
-                    {text(t.common.viewCase, language)}
-                  </Link>
-                </div>
-              </article>
+              <div className="hero-rotator">
+                <span className="hero-rotator__label">
+                  {language === "ru" ? "НАПРАВЛЕНИЯ" : "FOCUS"}
+                </span>
+                <span className="hero-rotator__dot" aria-hidden="true" />
+                <span className="hero-rotator__window">
+                  <motion.span
+                    key={`${language}-${heroServiceIndex}`}
+                    className="hero-rotator__value"
+                    initial={reduceMotion ? { opacity: 1, y: 0 } : { opacity: 0, y: 18 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={reduceMotion ? { opacity: 1, y: 0 } : { opacity: 0, y: -18 }}
+                    transition={{ duration: reduceMotion ? 0 : 0.48, ease: [0.22, 1, 0.36, 1] }}
+                  >
+                    {heroServices[heroServiceIndex]}
+                  </motion.span>
+                </span>
+              </div>
             </motion.div>
           </div>
         </section>
 
         <motion.section className="intro" {...sectionMotion}>
-          <div className="container">
-            <SectionTitle
-              label={text(t.home.introLabel, language)}
-              title={text(t.home.introText, language)}
-            />
+          <div className="container approach-grid">
+            <div className="approach-heading">
+              <p className="section-heading__label">{text(t.home.introLabel, language)}</p>
+              <h2 className="approach-title">
+                {text(t.home.introTitle, language).split("\n").map((line) => (
+                  <span key={line}>{line}</span>
+                ))}
+              </h2>
+            </div>
+            <div className="approach-body">
+              <p className="approach-copy">{text(t.home.introBody, language)}</p>
+              <div className="approach-points">
+                {t.home.introPoints[language].map((point, index) => (
+                  <motion.div
+                    key={point}
+                    className="approach-point"
+                    {...pointMotion(index, Boolean(reduceMotion))}
+                  >
+                    <span className="approach-point__number">{String(index + 1).padStart(2, "0")}</span>
+                    <span className="approach-point__text">{point}</span>
+                  </motion.div>
+                ))}
+              </div>
+            </div>
           </div>
         </motion.section>
 
@@ -289,16 +394,43 @@ export const HomePage = ({ language, setLanguage }: HomePageProps) => {
                       </div>
                     </div>
                     <div className="project-card__visual">
-                      <div className="project-card__panel">
-                        <p className="project-card__visual-title">{project.mediaTitle[language]}</p>
-                        <p className="project-card__visual-text">{project.mediaDescription[language]}</p>
-                      </div>
+                      {project.slug === "istudy-educational-center" ? (
+                        <div className="project-card__panel project-card__panel--media">
+                          <video
+                            className="project-card__video"
+                            src="/videos/istudy-preview.mp4"
+                            autoPlay
+                            muted
+                            loop
+                            playsInline
+                            preload="metadata"
+                          />
+                        </div>
+                      ) : project.slug === "shama-suleimanov" ? (
+                        <div className="project-card__panel project-card__panel--media">
+                          <video
+                            className="project-card__video"
+                            src="/videos/shama-preview.mp4"
+                            autoPlay
+                            muted
+                            loop
+                            playsInline
+                            preload="metadata"
+                          />
+                        </div>
+                      ) : (
+                        <div className="project-card__panel project-card__panel--confidential">
+                          <p className="project-card__visual-title">
+                            {language === "ru" ? "Конфиденциальный проект" : "Confidential project"}
+                          </p>
+                          <p className="project-card__visual-text">
+                            {language === "ru"
+                              ? "Этот проект находится под NDA, поэтому не может быть показан публично. По запросу могу рассказать о роли, процессе и типе задач без раскрытия деталей."
+                              : "This project is under NDA, so it cannot be shown publicly. On request, I can describe the role, process, and type of tasks without disclosing sensitive details."}
+                          </p>
+                        </div>
+                      )}
                     </div>
-                  </div>
-                  <div className="project-card__actions">
-                    <Link className="button button--ghost" to={`/projects/${project.slug}`}>
-                      {text(t.common.viewCase, language)}
-                    </Link>
                   </div>
                 </article>
               ))}
@@ -309,11 +441,13 @@ export const HomePage = ({ language, setLanguage }: HomePageProps) => {
         <motion.section id="services" className="section" {...sectionMotion}>
           <div className="container">
             <SectionTitle title={text(t.home.servicesTitle, language)} />
-            <div className="services-list">
+            <div className="services-grid">
               {services.map((service, index) => (
-                <article key={service.title.en} className="service-item">
-                  <span className="service-item__number">{String(index + 1).padStart(2, "0")}</span>
-                  <div className="service-item__body">
+                <article key={service.title.en} className="service-card">
+                  <span className="service-card__icon" aria-hidden="true">
+                    {serviceIcons[index] ?? "•"}
+                  </span>
+                  <div className="service-card__body">
                     <h3>{service.title[language]}</h3>
                     <p>{service.description[language]}</p>
                   </div>
@@ -325,10 +459,32 @@ export const HomePage = ({ language, setLanguage }: HomePageProps) => {
 
         <motion.section id="about" className="section section--split" {...sectionMotion}>
           <div className="container about-grid">
-            <SectionTitle title={text(t.home.aboutTitle, language)} />
+            <div className="about-profile">
+              <div className="about-portrait" aria-hidden="true">
+                <motion.img
+                  className="about-portrait__image"
+                  src="/images/mansur-about.jpg"
+                  alt=""
+                  initial={reduceMotion ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 1.05 }}
+                  whileInView={{ opacity: 1, scale: 1 }}
+                  viewport={{ once: true, amount: 0.35 }}
+                  transition={{ duration: reduceMotion ? 0 : 0.7, ease: [0.22, 1, 0.36, 1] }}
+                />
+                <div className="about-portrait__overlay" />
+              </div>
+            </div>
             <div className="about-copy">
+              <h2 className="about-title">{text(t.home.aboutTitle, language)}</h2>
               <p className="large-copy">{text(t.home.aboutText, language)}</p>
               <p className="muted-copy">{text(t.home.aboutNote, language)}</p>
+              <div className="about-facts">
+                {aboutDetails.map((item) => (
+                  <div key={item.label} className="about-fact">
+                    <span>{item.label}</span>
+                    <strong>{item.value}</strong>
+                  </div>
+                ))}
+              </div>
             </div>
           </div>
         </motion.section>
@@ -336,7 +492,7 @@ export const HomePage = ({ language, setLanguage }: HomePageProps) => {
         <motion.section id="process" className="section" {...sectionMotion}>
           <div className="container">
             <SectionTitle title={text(t.home.processTitle, language)} />
-            <div className="timeline">
+            <div className="timeline timeline--compact">
               {processSteps.map((step) => (
                 <article key={step.number} className="timeline__item">
                   <span className="timeline__number">{step.number}</span>
@@ -365,8 +521,11 @@ export const HomePage = ({ language, setLanguage }: HomePageProps) => {
           <div className="container">
             <SectionTitle title={text(t.home.reasonsTitle, language)} />
             <div className="reasons-grid">
-              {reasons.map((reason) => (
+              {reasons.map((reason, index) => (
                 <article key={reason.title.en} className="reason-card">
+                  <span className="reason-card__icon" aria-hidden="true">
+                    {reasonIcons[index] ?? "•"}
+                  </span>
                   <h3>{reason.title[language]}</h3>
                   <p>{reason.description[language]}</p>
                 </article>
@@ -399,7 +558,7 @@ export const HomePage = ({ language, setLanguage }: HomePageProps) => {
 
         <motion.section id="contact" className="section section--contact" {...sectionMotion}>
           <div className="container contact-grid">
-            <div>
+            <div className="contact-intro">
               <p className="section-heading__label">{text(t.home.contactLabel, language)}</p>
               <h2 className="contact-title">
                 {text(t.home.contactTitle, language).split("\n").map((line) => (
