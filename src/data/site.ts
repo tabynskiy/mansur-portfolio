@@ -11,51 +11,37 @@ export const navigation = [
   { id: "projects", label: { ru: "Проекты", en: "Projects" } },
   { id: "services", label: { ru: "Услуги", en: "Services" } },
   { id: "about", label: { ru: "Обо мне", en: "About" } },
-  { id: "process", label: { ru: "Подход", en: "Process" } },
+  { id: "process", label: { ru: "Процесс", en: "Process" } },
   { id: "contact", label: { ru: "Контакты", en: "Contact" } },
 ];
 
 export const services: LocalizedItem[] = [
   {
-    title: { ru: "Landing Pages", en: "Landing Pages" },
+    title: { ru: "Лендинги и промо-сайты", en: "Landing pages and promo sites" },
     description: {
-      ru: "Одностраничные сайты для экспертов, компаний и конкретных услуг.",
-      en: "Conversion-focused one-page websites for experts, businesses, and focused offers.",
+      ru: "Короткие, сильные сайты для услуги, продукта или эксперта.",
+      en: "Focused, high-clarity websites for a service, product, or expert.",
     },
   },
   {
-    title: { ru: "Business Websites", en: "Business Websites" },
+    title: { ru: "Корпоративные сайты", en: "Business websites" },
     description: {
-      ru: "Многостраничные сайты для презентации компании, команды и направлений.",
-      en: "Multi-page websites for presenting a company, team, and service lines.",
+      ru: "Многостраничные сайты с понятной структурой, кейсами и маршрутами для клиента.",
+      en: "Multi-page websites with clear structure, case studies, and conversion paths.",
     },
   },
   {
-    title: { ru: "Personal Brand Websites", en: "Personal Brand Websites" },
+    title: { ru: "Редизайн и визуальная система", en: "Redesign and visual system" },
     description: {
-      ru: "Сайты для тренеров, врачей, преподавателей и других публичных специалистов.",
-      en: "Websites for coaches, doctors, teachers, and other public-facing specialists.",
+      ru: "Пересборка устаревшего сайта в более спокойную и дорогую подачу.",
+      en: "Reworking an outdated site into a calmer and more premium presentation.",
     },
   },
   {
-    title: { ru: "AI & Automation", en: "AI & Automation" },
+    title: { ru: "AI и автоматизация", en: "AI and automation" },
     description: {
-      ru: "AI-помощники, автоматизация процессов и полезные сценарии для бизнеса.",
-      en: "AI assistants, process automation, and practical business workflows.",
-    },
-  },
-  {
-    title: { ru: "Website Redesign", en: "Website Redesign" },
-    description: {
-      ru: "Обновление структуры, мобильной версии и визуальной системы существующего сайта.",
-      en: "Structure, mobile, and visual-system redesign for an existing website.",
-    },
-  },
-  {
-    title: { ru: "Integrations", en: "Integrations" },
-    description: {
-      ru: "Формы, Telegram-уведомления, аналитика и внешние сервисы с честной оценкой сложности.",
-      en: "Forms, Telegram notifications, analytics, and third-party services with honest scope evaluation.",
+      ru: "Практичные AI-сценарии и автоматизация коммуникаций вокруг сайта.",
+      en: "Practical AI workflows and communication automation around the website.",
     },
   },
 ];
@@ -65,110 +51,87 @@ export const processSteps = [
     number: "01",
     title: { ru: "Погружение", en: "Discovery" },
     description: {
-      ru: "Изучение задачи, аудитории, контекста и реальных бизнес-ограничений.",
-      en: "Understanding the task, audience, context, and business constraints.",
+      ru: "Понимаем задачу, аудиторию и ограничения бизнеса.",
+      en: "We define the task, audience, and business constraints.",
     },
   },
   {
     number: "02",
     title: { ru: "Структура", en: "Structure" },
     description: {
-      ru: "Формирование логики страниц, сценариев и ключевых CTA.",
-      en: "Shaping page logic, journeys, and key call-to-action moments.",
+      ru: "Собираем логику страниц, смысловые блоки и CTA.",
+      en: "We shape page logic, content hierarchy, and CTA flow.",
     },
   },
   {
     number: "03",
-    title: { ru: "Концепция", en: "Concept" },
+    title: { ru: "Дизайн", en: "Design" },
     description: {
-      ru: "Подбор визуального направления, ритма и композиции.",
-      en: "Defining the visual direction, rhythm, and composition.",
+      ru: "Формируем спокойную визуальную систему и ритм страницы.",
+      en: "We craft a calm visual system and page rhythm.",
     },
   },
   {
     number: "04",
     title: { ru: "Разработка", en: "Build" },
     description: {
-      ru: "Адаптивная реализация, анимации, интерактив и базовые интеграции.",
-      en: "Responsive implementation, motion, interaction, and baseline integrations.",
+      ru: "Собираем адаптивный интерфейс и нужные интеграции.",
+      en: "We build the responsive interface and required integrations.",
     },
   },
   {
     number: "05",
     title: { ru: "Запуск", en: "Launch" },
     description: {
-      ru: "Проверка сборки, публикация, preview и передача результата.",
-      en: "Build verification, deployment, preview, and handoff.",
-    },
-  },
-  {
-    number: "06",
-    title: { ru: "Поддержка", en: "Support" },
-    description: {
-      ru: "Исправления и развитие проекта по согласованному формату.",
-      en: "Post-launch fixes and further development by agreement.",
+      ru: "Проверяем сборку, делаем preview и готовим публикацию.",
+      en: "We verify the build, prepare a preview, and launch cleanly.",
     },
   },
 ];
 
 export const reasons = [
   {
-    title: { ru: "Business-first approach", en: "Business-first approach" },
+    title: { ru: "Ясная подача", en: "Clear presentation" },
     description: {
-      ru: "Сначала задача бизнеса, затем визуальная оболочка и технологии.",
-      en: "The business problem comes first, then design and technology.",
+      ru: "Каждая секция работает на смысл, а не на визуальный шум.",
+      en: "Each section is there to communicate value, not visual noise.",
     },
   },
   {
-    title: { ru: "Responsive by default", en: "Responsive by default" },
+    title: { ru: "Современная адаптивность", en: "Modern responsiveness" },
     description: {
-      ru: "Сайт сразу проектируется под телефон, планшет и desktop.",
-      en: "The website is designed for phone, tablet, and desktop from the start.",
+      ru: "Сайт сразу проектируется для desktop, laptop и mobile.",
+      en: "The site is designed for desktop, laptop, and mobile from day one.",
     },
   },
   {
-    title: { ru: "Transparent workflow", en: "Transparent workflow" },
+    title: { ru: "Честный процесс", en: "Honest process" },
     description: {
-      ru: "Понятные этапы, GitHub и предсказуемый процесс без туманных обещаний.",
-      en: "Clear stages, GitHub-backed work, and a predictable process without vague promises.",
+      ru: "Понятные этапы, аккуратная реализация и прозрачная передача результата.",
+      en: "Clear stages, careful implementation, and transparent delivery.",
     },
   },
   {
-    title: { ru: "Modern implementation", en: "Modern implementation" },
+    title: { ru: "Фокус на результате", en: "Result-first mindset" },
     description: {
-      ru: "Современный стек, аккуратная адаптивность и подготовка к публикации.",
-      en: "A modern stack, careful responsiveness, and publication-ready delivery.",
-    },
-  },
-  {
-    title: { ru: "AI-assisted workflow", en: "AI-assisted workflow" },
-    description: {
-      ru: "AI помогает ускорять анализ и сборку, но результат проходит ручную проверку.",
-      en: "AI accelerates analysis and production, but the final output is reviewed manually.",
-    },
-  },
-  {
-    title: { ru: "Post-launch support", en: "Post-launch support" },
-    description: {
-      ru: "После запуска можно договориться о сопровождении и следующих итерациях.",
-      en: "Post-launch fixes and the next iteration can be planned together.",
+      ru: "Целью остается не эффект, а рабочий инструмент для бизнеса.",
+      en: "The goal is not spectacle but a useful business tool.",
     },
   },
 ];
 
 export const technologies = [
+  "React",
+  "TypeScript",
+  "Vite",
+  "Framer Motion",
   "HTML",
   "CSS",
-  "JavaScript",
-  "TypeScript",
-  "React",
-  "Vite",
   "Git",
   "GitHub",
   "Vercel",
-  "Codex",
-  "OpenAI tools",
-  "Claude",
+  "OpenAI",
+  "Automation",
 ];
 
 export const contacts = [
@@ -195,6 +158,6 @@ export const availableLanguages: Array<{ code: Language; label: string }> = [
 ];
 
 export const legalText = {
-  ru: "Для сложных систем с личными кабинетами, платежами или чувствительными данными архитектура и безопасность оцениваются отдельно, а при необходимости к проекту подключается профильный backend-разработчик.",
-  en: "For complex systems with accounts, payments, or sensitive data, architecture and security are assessed separately and a dedicated backend specialist can be involved when needed.",
+  ru: "Для более сложных систем с личными кабинетами, оплатами или чувствительными данными архитектура и безопасность оцениваются отдельно, а при необходимости к проекту подключается профильный backend-разработчик.",
+  en: "For more complex systems with accounts, payments, or sensitive data, architecture and security are assessed separately and a dedicated backend specialist can be involved when needed.",
 };

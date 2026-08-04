@@ -17,7 +17,7 @@ type ContactMethod = "telegram" | "whatsapp";
 const sectionMotion = {
   initial: { opacity: 0, y: 24 },
   whileInView: { opacity: 1, y: 0 },
-  viewport: { once: true, amount: 0.25 },
+  viewport: { once: true, amount: 0.18 },
   transition: { duration: 0.55 },
 };
 
@@ -115,28 +115,8 @@ const SectionTitle = ({
 
 export const HomePage = ({ language, setLanguage }: HomePageProps) => {
   const reduceMotion = useReducedMotion();
-  const heroPreview = {
-    eyebrow: {
-      ru: "Избранный проект",
-      en: "Featured preview",
-    },
-    title: {
-      ru: "Mansur Portfolio",
-      en: "Mansur Portfolio",
-    },
-    description: {
-      ru: "Главный экран нового портфолио с акцентом на кейсы, понятное позиционирование и быстрый переход к обсуждению проекта.",
-      en: "The new portfolio front page with case-study focus, clear positioning, and a fast route into a project discussion.",
-    },
-    cta: {
-      ru: "Открыть кейсы",
-      en: "Open case studies",
-    },
-    tags: {
-      ru: ["Портфолио", "Разработка", "AI-процесс"],
-      en: ["Portfolio", "Frontend", "AI workflow"],
-    },
-  };
+  const featuredProjects = projects.slice(0, 3);
+  const heroProject = projects[0];
 
   useMeta({
     title: text(t.seo.title, language),
@@ -149,7 +129,7 @@ export const HomePage = ({ language, setLanguage }: HomePageProps) => {
         name: "Mansur Tabynskiy",
         url: siteUrl,
         jobTitle:
-          language === "ru" ? "Веб-разработчик и AI-специалист" : "Web Developer & AI Solutions Specialist",
+          language === "ru" ? "Веб-разработчик и специалист по AI-решениям" : "Web developer and AI solutions specialist",
       },
       {
         "@context": "https://schema.org",
@@ -177,8 +157,6 @@ export const HomePage = ({ language, setLanguage }: HomePageProps) => {
     const lines = [
       `Name: ${formData.get("name")}`,
       `Contact: ${formData.get("contact")}`,
-      `Project type: ${formData.get("projectType")}`,
-      `Budget: ${formData.get("budget")}`,
       `Message: ${formData.get("message")}`,
     ];
 
@@ -230,11 +208,11 @@ export const HomePage = ({ language, setLanguage }: HomePageProps) => {
 
             <motion.div
               className="hero__visual"
-              initial={{ opacity: 0, scale: reduceMotion ? 1 : 0.96 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ duration: reduceMotion ? 0 : 0.7, delay: reduceMotion ? 0 : 0.1 }}
+              initial={{ opacity: 0, y: reduceMotion ? 0 : 24 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: reduceMotion ? 0 : 0.7, delay: reduceMotion ? 0 : 0.08 }}
             >
-              <div className="hero-preview">
+              <article className="hero-preview">
                 <div className="hero-preview__bar">
                   <span />
                   <span />
@@ -242,41 +220,36 @@ export const HomePage = ({ language, setLanguage }: HomePageProps) => {
                 </div>
                 <div className="hero-preview__body">
                   <div className="hero-preview__meta">
-                    <span>{heroPreview.eyebrow[language]}</span>
-                    <span>2026</span>
+                    <span>{language === "ru" ? "Избранный проект" : "Featured project"}</span>
+                    <span>{heroProject.year}</span>
                   </div>
-                  <div className="hero-preview__content">
-                    <div className="hero-preview__copy">
-                      <strong>{heroPreview.title[language]}</strong>
-                      <p>{heroPreview.description[language]}</p>
+                  <div className="hero-preview__copy">
+                    <p className="hero-preview__eyebrow">{heroProject.category[language]}</p>
+                    <strong>{heroProject.title}</strong>
+                    <p>{heroProject.summary[language]}</p>
+                  </div>
+                  <div className="hero-preview__surface">
+                    <div className="hero-preview__surface-main">
+                      <span>{text(t.project.role, language)}</span>
+                      <strong>{heroProject.role[language]}</strong>
                     </div>
-                    <div className="hero-preview__surface">
-                      <div className="hero-preview__surface-main">
-                        <span>{text(t.home.projectsTitle, language)}</span>
-                        <strong>01 / iStudy Educational Center</strong>
-                      </div>
-                      <div className="hero-preview__surface-side">
-                        <span>{text(t.project.role, language)}</span>
-                        <strong>
-                          {language === "ru" ? "Структура · UI · разработка" : "Structure · UI · Frontend"}
-                        </strong>
-                      </div>
+                    <div className="hero-preview__surface-main hero-preview__surface-main--compact">
+                      <span>{language === "ru" ? "Ключевой акцент" : "Key focus"}</span>
+                      <strong>{heroProject.mediaTitle[language]}</strong>
                     </div>
                   </div>
-                  <div className="hero-preview__footer">
-                    <div className="hero-preview__tags" aria-label="Project tags">
-                      {heroPreview.tags[language].map((tag) => (
-                        <span key={tag} className="hero-preview__tag">
-                          {tag}
-                        </span>
-                      ))}
-                    </div>
-                    <a className="button button--ghost hero-preview__cta" href="#projects">
-                      {heroPreview.cta[language]}
-                    </a>
+                  <div className="hero-preview__tags" aria-label="Project tags">
+                    {heroProject.technologies.slice(0, 3).map((tag) => (
+                      <span key={tag} className="hero-preview__tag">
+                        {tag}
+                      </span>
+                    ))}
                   </div>
+                  <Link className="button button--ghost hero-preview__cta" to={`/projects/${heroProject.slug}`}>
+                    {text(t.common.viewCase, language)}
+                  </Link>
                 </div>
-              </div>
+              </article>
             </motion.div>
           </div>
         </section>
@@ -294,56 +267,31 @@ export const HomePage = ({ language, setLanguage }: HomePageProps) => {
           <div className="container">
             <SectionTitle title={text(t.home.projectsTitle, language)} />
             <div className="project-list">
-              {projects.map((project) => (
+              {featuredProjects.map((project) => (
                 <article
                   key={project.slug}
                   className="project-card"
                   style={{ ["--accent" as string]: project.accent }}
                 >
-                  <div className="project-card__meta">
-                    <span>{project.number}</span>
-                    <span>{project.year}</span>
+                  <div className="project-card__heading">
+                    <div>
+                      <p className="project-card__category">{project.category[language]}</p>
+                      <h3>{project.title}</h3>
+                    </div>
+                    <span className="project-card__year">{project.year}</span>
                   </div>
                   <div className="project-card__content">
                     <div className="project-card__copy">
-                      <p className="project-card__category">{project.category[language]}</p>
-                      <h3>{project.title}</h3>
                       <p>{project.summary[language]}</p>
-                      <dl className="project-card__details">
-                        <div>
-                          <dt>{text(t.project.role, language)}</dt>
-                          <dd>{project.role[language]}</dd>
-                        </div>
-                        {project.status ? (
-                          <div>
-                            <dt>{text(t.project.status, language)}</dt>
-                            <dd>{project.status[language]}</dd>
-                          </div>
-                        ) : null}
-                        {project.disclaimer ? (
-                          <div>
-                            <dt>{text(t.project.disclaimer, language)}</dt>
-                            <dd>{project.disclaimer[language]}</dd>
-                          </div>
-                        ) : null}
-                      </dl>
+                      <div className="project-card__role">
+                        <span>{text(t.project.role, language)}</span>
+                        <strong>{project.role[language]}</strong>
+                      </div>
                     </div>
                     <div className="project-card__visual">
                       <div className="project-card__panel">
-                        <p className="project-card__visual-title">
-                          {project.mediaTitle[language]}
-                        </p>
-                        <p className="project-card__visual-text">
-                          {project.mediaDescription[language]}
-                        </p>
-                        <div className="project-card__metrics">
-                          {project.metrics.map((metric) => (
-                            <div key={metric.value + metric.label.en}>
-                              <strong>{metric.value}</strong>
-                              <span>{metric.label[language]}</span>
-                            </div>
-                          ))}
-                        </div>
+                        <p className="project-card__visual-title">{project.mediaTitle[language]}</p>
+                        <p className="project-card__visual-text">{project.mediaDescription[language]}</p>
                       </div>
                     </div>
                   </div>
@@ -365,7 +313,7 @@ export const HomePage = ({ language, setLanguage }: HomePageProps) => {
               {services.map((service, index) => (
                 <article key={service.title.en} className="service-item">
                   <span className="service-item__number">{String(index + 1).padStart(2, "0")}</span>
-                  <div>
+                  <div className="service-item__body">
                     <h3>{service.title[language]}</h3>
                     <p>{service.description[language]}</p>
                   </div>
@@ -376,17 +324,11 @@ export const HomePage = ({ language, setLanguage }: HomePageProps) => {
         </motion.section>
 
         <motion.section id="about" className="section section--split" {...sectionMotion}>
-          <div className="container split-grid">
-            <div>
-              <SectionTitle title={text(t.home.aboutTitle, language)} />
+          <div className="container about-grid">
+            <SectionTitle title={text(t.home.aboutTitle, language)} />
+            <div className="about-copy">
               <p className="large-copy">{text(t.home.aboutText, language)}</p>
               <p className="muted-copy">{text(t.home.aboutNote, language)}</p>
-            </div>
-            <div className="portrait-placeholder" aria-hidden="true">
-              <div className="portrait-placeholder__frame">
-                <span>MT</span>
-                <small>Web / AI / Automation</small>
-              </div>
             </div>
           </div>
         </motion.section>
@@ -466,7 +408,7 @@ export const HomePage = ({ language, setLanguage }: HomePageProps) => {
               </h2>
               <p className="large-copy">{text(t.home.contactText, language)}</p>
               <div className="contact-cards">
-                {contacts.map((contact) => (
+                {contacts.slice(0, 2).map((contact) => (
                   <a key={contact.label} href={contact.href} className="contact-card" target="_blank" rel="noreferrer">
                     <span>{contact.label}</span>
                     <strong>{contact.value}</strong>
@@ -485,16 +427,8 @@ export const HomePage = ({ language, setLanguage }: HomePageProps) => {
                 <input name="contact" required />
               </label>
               <label>
-                <span>{text(t.form.projectType, language)}</span>
-                <input name="projectType" required />
-              </label>
-              <label>
-                <span>{text(t.form.budget, language)}</span>
-                <input name="budget" />
-              </label>
-              <label>
                 <span>{text(t.form.message, language)}</span>
-                <textarea name="message" rows={6} required />
+                <textarea name="message" rows={5} required />
               </label>
               <label className="checkbox">
                 <input type="checkbox" name="consent" required />

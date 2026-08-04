@@ -15,9 +15,7 @@ export const ProjectPage = ({ language, setLanguage }: ProjectPageProps) => {
   const project = projectsBySlug[slug];
 
   useMeta({
-    title: project
-      ? `${project.title} — Mansur Tabynskiy`
-      : text(t.seo.title, language),
+    title: project ? `${project.title} - Mansur Tabynskiy` : text(t.seo.title, language),
     description: project ? project.summary[language] : text(t.seo.description, language),
     canonical: project ? `${siteUrl}/projects/${project.slug}` : siteUrl,
     jsonLd: project
@@ -41,7 +39,7 @@ export const ProjectPage = ({ language, setLanguage }: ProjectPageProps) => {
           <Link className="button button--ghost" to="/">
             {text(t.common.backHome, language)}
           </Link>
-          <h1>Project not found</h1>
+          <h1>{language === "ru" ? "Проект не найден" : "Project not found"}</h1>
         </div>
       </div>
     );
@@ -79,7 +77,7 @@ export const ProjectPage = ({ language, setLanguage }: ProjectPageProps) => {
           <div className="container project-hero__grid">
             <div>
               <p className="eyebrow">
-                {project.number} · {project.category[language]} · {project.year}
+                {project.number} - {project.category[language]} - {project.year}
               </p>
               <h1>{project.title}</h1>
               <p className="project-hero__summary">{project.summary[language]}</p>
@@ -91,7 +89,7 @@ export const ProjectPage = ({ language, setLanguage }: ProjectPageProps) => {
               </div>
               <div>
                 <span>{text(t.project.technologies, language)}</span>
-                <strong>{project.technologies.join(" · ")}</strong>
+                <strong>{project.technologies.join(" - ")}</strong>
               </div>
               {project.status ? (
                 <div>

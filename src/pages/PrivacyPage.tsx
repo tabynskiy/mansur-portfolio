@@ -11,7 +11,7 @@ type PrivacyPageProps = {
 
 export const PrivacyPage = ({ language, setLanguage }: PrivacyPageProps) => {
   useMeta({
-    title: `${text(t.privacy.title, language)} — Mansur Tabynskiy`,
+    title: `${text(t.privacy.title, language)} - Mansur Tabynskiy`,
     description: text(t.privacy.text, language),
     canonical: `${siteUrl}/privacy`,
   });
